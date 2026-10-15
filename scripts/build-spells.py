@@ -76,7 +76,6 @@ def main(sheet_root: str, master_root: str) -> None:
                 target.setdefault("aliasesEn", []).append(r["nameEn"])
     if unmatched:
         print("Не нашлись в листе:", unmatched)
-    spells.sort(key=lambda s: (s["level"], s["nameEn"].lower()))
     with open("data/spells.json", "w", encoding="utf-8") as f:
         json.dump(spells, f, ensure_ascii=False, indent=1)
     with_combat = sum(1 for s in spells if "combat" in s)

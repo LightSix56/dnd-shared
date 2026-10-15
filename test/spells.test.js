@@ -40,3 +40,8 @@ test("masterRecord есть у каждого заклинания с боевы
     assert.equal(new Set(orders).size, orders.length);
   }
 });
+
+test("порядок записей — как в компендиуме листа: сначала заговоры, затем уровни по возрастанию", () => {
+  const levels = SPELLS.map((s) => s.level);
+  assert.deepEqual(levels, [...levels].sort((a, b) => a - b));
+});
