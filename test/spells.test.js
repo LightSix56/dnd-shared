@@ -45,3 +45,9 @@ test("порядок записей — как в компендиуме лис�
   const levels = SPELLS.map((s) => s.level);
   assert.deepEqual(levels, [...levels].sort((a, b) => a - b));
 });
+
+test("лёгкая версия для листа: те же заклинания в том же порядке, без боевых полей", async () => {
+  const { CORE_SPELLS } = await import("../src/core.js");
+  assert.deepEqual(CORE_SPELLS.map((s) => s.id), SPELLS.map((s) => s.id));
+  assert.ok(CORE_SPELLS.every((s) => !("combat" in s) && !("masterRecord" in s) && !("combatSource" in s)));
+});

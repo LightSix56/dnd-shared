@@ -78,6 +78,10 @@ def main(sheet_root: str, master_root: str) -> None:
         print("Не нашлись в листе:", unmatched)
     with open("data/spells.json", "w", encoding="utf-8") as f:
         json.dump(spells, f, ensure_ascii=False, indent=1)
+    # лёгкая версия для листа: без боевых параметров и записей мастера
+    core = [{k: v for k, v in s.items() if k not in ("combat", "combatSource", "masterRecord")} for s in spells]
+    with open("data/spells-core.json", "w", encoding="utf-8") as f:
+        json.dump(core, f, ensure_ascii=False, indent=1)
     with_combat = sum(1 for s in spells if "combat" in s)
     print(f"Заклинаний: {len(spells)}, с боевыми параметрами: {with_combat}")
 
