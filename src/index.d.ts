@@ -41,6 +41,8 @@ export interface Spell {
   /** параметры для боевого движка; есть не у всех заклинаний */
   combat?: SpellCombatParameters;
   combatSource?: "srd" | "expanded";
+  /** запись заклинания в том виде, как её хранил сайт мастера (без parameters), плюс порядковый номер в исходном файле */
+  masterRecord?: { id: string; name: string; nameEn: string; level: number; school: string; classes: string[]; components: string[]; material?: string; ritual: boolean; duration: string; concentration: boolean; castingTime: string; rangeRaw?: string; order: number };
   /** прежние id сайта мастера (srd / spell_exp_N) */
   legacyIds?: string[];
   /** прежние английские названия сайта мастера, если они отличались (например "Acid Arrow") */

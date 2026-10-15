@@ -31,3 +31,12 @@ test("SRD-заклинания с другим названием находят
   assert.equal(findSpell("Acid Arrow"), findSpell("Melf's Acid Arrow"));
   assert.ok(findSpell("Acid Arrow").combat);
 });
+
+test("masterRecord есть у каждого заклинания с боевыми параметрами и номера не повторяются", () => {
+  const withCombat = SPELLS.filter((s) => s.combat);
+  assert.ok(withCombat.every((s) => s.masterRecord && s.legacyIds?.length === 1));
+  for (const src of ["srd", "expanded"]) {
+    const orders = withCombat.filter((s) => s.combatSource === src).map((s) => s.masterRecord.order);
+    assert.equal(new Set(orders).size, orders.length);
+  }
+});

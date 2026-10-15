@@ -55,7 +55,7 @@ def main(sheet_root: str, master_root: str) -> None:
     ]
     unmatched = []
     for label, rows in sources:
-        for r in rows:
+        for order, r in enumerate(rows):
             k = key(r["nameEn"])
             k = key(ALIASES.get(k, k))
             target = by_key.get(k)
@@ -65,6 +65,11 @@ def main(sheet_root: str, master_root: str) -> None:
             # SRD сначала, расширенные перекрывают: у них точнее параметры
             target["combat"] = r["parameters"]
             target["combatSource"] = label
+            # поля записи мастера как были: нужны, чтобы сайт мастера работал без изменений поведения
+            target["masterRecord"] = {
+                **{k: v for k, v in r.items() if k != "parameters"},
+                "order": order,
+            }
             # старые id мастера сохраняем, чтобы ссылки на них не терялись
             target.setdefault("legacyIds", []).append(r["id"])
             if key(r["nameEn"]) != key(target["nameEn"]):
