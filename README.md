@@ -7,6 +7,7 @@
 - `src/index.js` — `SPELLS` и `findSpell(запрос)` (английское или русское название, id листа, прежний id мастера).
 - `dnd-shared/core` — лёгкая версия для листа (`CORE_SPELLS`, без боевых полей).
 - `scripts/build-spells.py` — сборка `data/spells.json` из двух источников; запуск описан в начале файла.
+- `dnd-shared/fighter` — подклассы Воина (редакция 2014, dnd.su): `FIGHTER_DATA`; собирается `scripts/import-dndsu-fighter.py`.
 
 ## Совместимость
 В листе героя заклинания хранятся по русскому названию, поэтому названия не меняются. Прежние id мастера (`spell_exp_N`, id SRD) сохранены в `legacyIds`, прежние английские названия — в `aliasesEn`.

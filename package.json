@@ -1,6 +1,6 @@
 {
   "name": "dnd-shared",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Общая библиотека D&D 5e для сайта мастера и сайта листа персонажа: заклинания (с боевыми параметрами), позже умения и атаки",
   "type": "module",
   "main": "src/index.js",
@@ -8,11 +8,12 @@
   "exports": {
     ".": { "types": "./src/index.d.ts", "default": "./src/index.js" },
     "./core": { "types": "./src/core.d.ts", "default": "./src/core.js" },
+    "./fighter": { "types": "./src/fighter.d.ts", "default": "./src/fighter.js" },
     "./spells.json": "./data/spells.json"
   },
   "files": ["src", "data"],
   "scripts": {
-    "test": "node --test test/spells.test.js"
+    "test": "node --test test/*.test.js"
   },
   "license": "UNLICENSED"
 }
