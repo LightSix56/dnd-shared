@@ -1,3 +1,9 @@
+export interface FighterDataOption {
+  id: string;
+  name: string;
+  description: string;
+}
+
 export interface FighterDataFeature {
   id: string;
   subclassId: string;
@@ -5,7 +11,8 @@ export interface FighterDataFeature {
   level: number;
   name: string;
   description: string;
-  [key: string]: unknown;
+  source: string;
+  options: FighterDataOption[];
 }
 
 export interface FighterData {
